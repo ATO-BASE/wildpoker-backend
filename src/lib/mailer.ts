@@ -16,6 +16,11 @@ export const transporter = nodemailer.createTransport({
   },
 });
 
+// Set default sender to prevent "blank sender" errors
+transporter._defaults = {
+  from: 'support@wildpoker.co'
+};
+
 /** Call once during app boot; rejects if creds or network are wrong */
 export const verifySMTP = async () => {
   await transporter.verify();

@@ -129,6 +129,7 @@ export class NotificationService {
         // Send email notification
         if (user?.email && (notification.type === 'tournament_reminder' || notification.type === 'system')) {
           await transporter.sendMail({
+            from: 'support@wildpoker.co',
             to: user.email,
             subject: notification.title,
             text: notification.body,

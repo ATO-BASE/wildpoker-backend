@@ -254,6 +254,7 @@ export class TournamentNotificationService {
     const user = await User.findByPk(userId);
     if (user?.email) {
       await transporter.sendMail({
+        from: 'support@wildpoker.co',
         to: user.email,
         subject: `Tournament ${timeLabel}: ${tournament.name}`,
         text: message,
